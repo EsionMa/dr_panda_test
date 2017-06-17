@@ -1,0 +1,25 @@
+.search-box {
+	margin: 10px;
+}
+
+.vertical-center {
+	line-height: 74px;
+}
+
+.in-same-row {
+	display: inline-block;
+}
+
+.page-selector {
+	float: right;
+}
+
+.input-box {
+	display: inline-block;
+	margin: auto 20px;
+	width: 50px;
+}
+
+.pagination>li>a {
+	cursor: pointer;
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.test.dao.LoginMapper">
+	<!-- 开启二级缓存 -->
+	<!-- <cache /> -->
+
+	<resultMap id="loginInfo" type="com.test.model.entity.TrLoginEntity">
+		<id column="user_id" property="userId" />
+		<result column="login_status" property="loginStatus" />
+		<result column="login_time" property="loginTime" />
+	</resultMap>
+
+	<!-- query loginInfo by userId -->
+	<select id="getLoginInfo" resultMap="loginInfo">
+		SELECT * FROM t_login WHERE
+		user_id = #{userId}
+	</select>
+
+	<insert id="addLogin" parameterType="com.test.model.value.login.AddLoginCondValue">
+		INSERT INTO t_login
+		(user_id,login_status,login_time)
+		VALUES
+		(#{userId},#{loginStatus},#{loginTime})
+	</insert>
+
+	<!-- update loginInfo by userId -->
+	<update id="editLogin" parameterType="com.test.model.value.login.EditLoginCondValue">
+		UPDATE t_login SET
+		login_status=#{loginStatus} WHERE user_id=#{userId}
+	</update>
+
+	<!-- delete loginInfo by userId -->
+	<delete id="deleteLogin">
+		DELETE FROM t_login WHERE user_id=#{userId}
+	</delete>
+</mapper>
